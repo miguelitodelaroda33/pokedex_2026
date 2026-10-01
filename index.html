@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex UI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <!-- HEADER ROJO SUPERIOR -->
+    <header class="pokedex-header">
+        <div class="pokedex-header-container">
+            <div class="header-brand">
+                <div class="lens-container">
+                    <div class="big-lens"></div>
+                    <div class="small-leds">
+                        <span class="led red"></span>
+                        <span class="led yellow"></span>
+                        <span class="led green"></span>
+                    </div>
+                </div>
+                <div class="brand-text-group">
+                    <span class="brand-title">POKÉDEX</span>
+                    <span class="brand-subtitle">SYSTEM V2.0</span>
+                </div>
+            </div>
+
+            <nav class="header-nav">
+                <a href="#" class="nav-link active">DATOS</a>
+                <a href="#" class="nav-link">EQUIPO</a>
+                <a href="#" class="nav-link">MAPA</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="widget-box search-box">
+                    <i class="bi bi-search search-icon"></i> READY
+                </div>
+                <div class="widget-box vox-box">
+                    VOX
+                    <div class="equalizer">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+                <div class="user-pill">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SUB-HEADER NEGRO -->
+    <section class="pokedex-sub-header">
+        <div class="sub-header-container">
+            <div class="search-box-wrapper">
+                <div class="search-input-group">
+                    <button type="button" class="search-btn-icon" id="btn-search">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <input type="text" id="pokemon-search" class="search-field" placeholder="Buscar por nombre o ID...">
+                </div>
+                <button type="button" class="btn-reset" id="btn-reset">RESET</button>
+            </div>
+
+            <div class="filter-section">
+                <span class="filter-label">TIPO:</span>
+                <div class="filter-buttons">
+                    <button type="button" class="btn-type btn-todos active">TODOS</button>
+                    <button type="button" class="btn-type btn-planta">PLANTA</button>
+                    <button type="button" class="btn-type btn-fuego">FUEGO</button>
+                    <button type="button" class="btn-type btn-agua">AGUA</button>
+                    <button type="button" class="btn-type btn-elec">ELEC</button>
+                    <button type="button" class="btn-type btn-psi">PSI</button>
+                </div>
+            </div>
+
+            <div class="voice-status-box">
+                <span class="status-dot"></span>
+                <span class="voice-text">ONLINE</span>
+                <i class="bi bi-mic-fill voice-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main-content">
+        <div class="pokedex-base-card">
+            <!-- BARRA SUPERIOR INTERNA DE LA POKÉDEX -->
+            <div class="card-top-bar">
+                <div class="card-top-left">
+                    <div class="square-lens">
+                        <div class="lens-glare"></div>
+                    </div>
+                    <div class="led-capsule">
+                        <span class="led-dot red-glow"></span>
+                        <span class="led-dot yellow-glow"></span>
+                        <span class="led-dot green-glow"></span>
+                    </div>
+                </div>
+                <div class="card-top-right">
+                    <span class="system-tag">KANTO REGION</span>
+                    <span class="system-subtag">INDEX #<span id="pkmn-id-head">001</span></span>
+                </div>
+            </div>
+
+            <!-- GRID PRINCIPAL DE 2 COLUMNAS -->
+            <div class="pokedex-body-grid">
+                <!-- COLUMNA IZQUIERDA: PANTALLA Y CONTROLES -->
+                <div class="pokedex-left-column">
+                    <div class="screen-frame">
+                        <div class="screen-frame-header">
+                            <div class="frame-dots">
+                                <span class="dot red-dot"></span>
+                                <span class="dot red-dot"></span>
+                            </div>
+                            <div class="frame-title">
+                                <span class="matrix-led"></span> LCD MONITOR
+                            </div>
+                        </div>
+
+                        <div class="lcd-screen">
+                            <div class="lcd-header">
+                                <span id="lcd-name">BULBASAUR</span>
+                                <span id="lcd-id">#001</span>
+                            </div>
+                            <div class="pokemon-sprite-container">
+                                <img id="pokemon-img" class="pokemon-img" src="" alt="Pokémon">
+                            </div>
+                            <div class="lcd-footer">
+                                <span id="lcd-status">MODE: ANALYZING</span>
+                                <div class="synth-bars">
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="screen-frame-footer">
+                            <div class="frame-circle-btn"></div>
+                            <div class="frame-speaker-grille">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons-container">
+                        <button type="button" class="btn-nav" id="btn-prev"><i class="bi bi-chevron-left"></i> ANTERIOR</button>
+                        <button type="button" class="btn-nav" id="btn-next">SIGUIENTE <i class="bi bi-chevron-right"></i></button>
+                    </div>
+
+                    <div class="left-controls-footer">
+                        <button type="button" class="btn-cryo-info">AUDIO CRY</button>
+                        <div class="pill-indicators">
+                            <span class="pill pill-dark-red"></span>
+                            <span class="pill pill-dark-grey"></span>
+                        </div>
+
+                        <div class="dpad">
+                            <div class="dpad-btn dpad-up" id="dpad-up"><i class="bi bi-caret-up-fill"></i></div>
+                            <div class="dpad-btn dpad-left" id="dpad-left"><i class="bi bi-caret-left-fill"></i></div>
+                            <div class="dpad-center"></div>
+                            <div class="dpad-btn dpad-right" id="dpad-right"><i class="bi bi-caret-right-fill"></i></div>
+                            <div class="dpad-btn dpad-down" id="dpad-down"><i class="bi bi-caret-down-fill"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: DATOS Y KEYPAD -->
+                <div class="pokedex-right-column">
+                    <div class="info-panel-black">
+                        <div class="info-header">
+                            <h2 class="pokemon-title" id="pkmn-name">BULBASAUR</h2>
+                            <span class="badge-type" id="pkmn-type">GRASS / POISON</span>
+                        </div>
+
+                        <div class="info-specs-box">
+                            <div class="spec-item">
+                                <span class="spec-label">ALTURA</span>
+                                <span class="spec-value" id="pkmn-height">0.7 m</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">PESO</span>
+                                <span class="spec-value" id="pkmn-weight">6.9 kg</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">CATEGORÍA</span>
+                                <span class="spec-value">SEMILLA</span>
+                            </div>
+                        </div>
+
+                        <div class="info-description-box">
+                            <div class="desc-header">> REGISTRO DE DATOS</div>
+                            <p class="desc-text" id="pkmn-desc">Cargando información...</p>
+                        </div>
+
+                        <div class="extra-info-box">
+                            <div class="extra-item">
+                                <span class="extra-label">DEBILIDADES:</span>
+                                <span class="extra-value">Fuego, Hielo, Volador, Psíquico</span>
+                            </div>
+                        </div>
+
+                        <div class="info-stats-container">
+                            <div class="stat-row">
+                                <span class="stat-label">PS</span>
+                                <div class="stat-bars-group">
+                                    <div class="stat-block fill"></div><div class="stat-block fill"></div><div class="stat-block"></div><div class="stat-block"></div><div class="stat-block"></div>
+                                </div>
+                                <span class="stat-number" id="stat-hp">45</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">ATAQUE</span>
+                                <div class="stat-bars-group">
+                                    <div class="stat-block fill"></div><div class="stat-block fill"></div><div class="stat-block fill"></div><div class="stat-block"></div><div class="stat-block"></div>
+                                </div>
+                                <span class="stat-number" id="stat-atk">49</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">DEFENSA</span>
+                                <div class="stat-bars-group">
+                                    <div class="stat-block fill"></div><div class="stat-block fill"></div><div class="stat-block fill"></div><div class="stat-block"></div><div class="stat-block"></div>
+                                </div>
+                                <span class="stat-number" id="stat-def">49</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="keypad-section">
+                        <div class="keypad-header">
+                            <span class="keypad-title">TECLADO DE ACCESO DIRECTO</span>
+                            <div class="keypad-actions">
+                                <button type="button" class="btn-circle btn-yellow" id="btn-clear-keypad">C</button>
+                            </div>
+                        </div>
+                        <div class="keypad-grid">
+                            <button type="button" class="num-btn" data-num="1">1</button>
+                            <button type="button" class="num-btn" data-num="2">2</button>
+                            <button type="button" class="num-btn" data-num="3">3</button>
+                            <button type="button" class="num-btn" data-num="4">4</button>
+                            <button type="button" class="num-btn" data-num="5">5</button>
+                            <button type="button" class="num-btn" data-num="6">6</button>
+                            <button type="button" class="num-btn" data-num="7">7</button>
+                            <button type="button" class="num-btn" data-num="8">8</button>
+                            <button type="button" class="num-btn" data-num="9">9</button>
+                            <button type="button" class="num-btn" data-num="0">0</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>
